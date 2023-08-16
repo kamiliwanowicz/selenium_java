@@ -17,4 +17,6 @@ Feature: Basic
 
     Examples:
       | type        |
+      | women       |
       | men       |
+      | accessories       |
