@@ -12,7 +12,7 @@ public class basicTestSetup extends base {
     String url = "https://uk.shop.gymshark.com/";
 
     @Before
-    public void driverSetup() throws Exception {
+    public void driverSetup() {
         driver = initializeDriver();
     }
 
@@ -21,7 +21,6 @@ public class basicTestSetup extends base {
         GymsharkPage gp = new GymsharkPage(driver);
         driver.get(url);
         gp.acceptCookies();
-        gp.getMensReleases();
         String[] randomItem = gp.selectRandomItem();
         gp.verifyDetailsOnProductPage(randomItem);
         String randSize = gp.selectRandomSize();
@@ -30,7 +29,7 @@ public class basicTestSetup extends base {
     }
 
     @After
-    public void teardown() throws Exception {
+    public void teardown(){
         driver.close();
 
     }

@@ -1,10 +1,7 @@
 package pages;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 import locators.homePageLocators;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -36,5 +33,40 @@ public class CommonMethods {
     public void click(WebElement element) {
         customWaitVisibilityOf(element, 10);
             element.click();
+    }
+
+    public boolean checkIfElementPresent(String locator, int timeout) {
+        if (locator.contains("//")) { //if locator is Xpath
+            try {
+                customWaitVisibilityOf(driver.findElement(By.xpath(locator)),timeout);
+                return true;
+            }
+            catch(TimeoutException e) {
+                return false;
+            }
+        }
+        else {
+            try { //is locator is CSS
+                customWaitVisibilityOf(driver.findElement(By.cssSelector(locator)),timeout);
+                return true;
+            }
+            catch(TimeoutException e) {
+                return false;
+            }
+        }
+    }
+
+    public boolean checkIfItemAttributePresent (WebElement randomItem, String locator) {
+        try {
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
+            WebElement el = randomItem.findElement(By.cssSelector(locator));
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+            return true;
+        }
+
+        catch (NoSuchElementException e) {
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+            return false;
+        }
     }
 }

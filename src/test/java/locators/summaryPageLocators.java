@@ -5,8 +5,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import java.util.List;
-
 public class summaryPageLocators {
 
     public summaryPageLocators(WebDriver driver) {
@@ -33,6 +31,9 @@ public class summaryPageLocators {
 
     @FindBy(xpath = "//a[contains(text(), 'View full bag')]")
     public WebElement viewFullBagButton;
+
+    @FindBy(css = "button[data-locator-id=miniBag-closeButton-select] i")
+    public WebElement closeXIcon;
 
 
 }

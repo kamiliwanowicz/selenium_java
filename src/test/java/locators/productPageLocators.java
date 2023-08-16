@@ -19,7 +19,7 @@ public class productPageLocators {
     @FindBy(css = "*[class^='product-information_fit']")
     public WebElement productFit;
 
-    @FindBy(css = "*[class^='variants_colour'] span")
+    @FindBy(css = "*[class^='product-information_title'] span")
     public WebElement productColour;
 
     @FindBy(css = "*[class^='product-information_price']")
@@ -30,6 +30,12 @@ public class productPageLocators {
 
     @FindBy(css = "*[class^='add-to-cart_sizes'] button")
     public List<WebElement> allSizes;
+
+    @FindBy(css = "#cart-count")
+    public WebElement cartCount;
+
+    @FindBy(css = ".icon-bag")
+    public WebElement iconBag;
 
 
 }

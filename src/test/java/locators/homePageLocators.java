@@ -14,10 +14,8 @@ public class homePageLocators {
     @FindBy(css = "button#onetrust-accept-btn-handler")
     public WebElement acceptCookies;
 
-    @FindBy(css = "#men")
-    public WebElement menCSS;
 
-    @FindBy(xpath = "//div[contains(@class, 'hero-block_desktop')] /a[contains(text(), 'SHOP NEW RELEASES')]")
+    @FindBy(xpath = "//div[starts-with(@class, 'hero-block_desktop')] //a[contains(text(), 'Shop New')]")
     public WebElement desktopNewReleasesXpath;
 
     @FindBy(xpath = "//h4[contains(text(), 'New Releases')]")
@@ -26,17 +24,12 @@ public class homePageLocators {
     @FindBy(css = "*[class^='product-grid_grid'] article")
     public List<WebElement> allItemsList;
 
-    @FindBy(css = "h4[class^='product-card_product-title']")
-    public List<WebElement> itemName;
+    public String itemNameCSS = "h4[class^='product-card_product-title']";
+    public String itemFitCSS = "p[class^='product-card_product-fit']";
+    public String itemColourCSS = "p[class^='product-card_product-colour']";
+    public String itemPriceCSS = "span[class^='product-card_product-price']";
 
-    @FindBy(css = "p[class^='product-card_product-fit']")
-    public List<WebElement> itemFit;
 
-    @FindBy(css = "p[class^='product-card_product-colour']")
-    public List<WebElement> itemColour;
-
-    @FindBy(css = "span[class^='product-card_product-price']")
-    public List<WebElement> itemPrice;
 
 
 }
