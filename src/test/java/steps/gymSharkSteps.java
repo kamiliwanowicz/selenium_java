@@ -12,13 +12,17 @@ import pages.GymsharkPage;
 import resources.base;
 
 public class gymSharkSteps extends base {
+
+    private World world;
+
+    public gymSharkSteps(World world) {
+        this.world = world;
+    }
     WebDriver driver;
     CommonMethods common;
     GymsharkPage gp;
 
     String url = "https://uk.shop.gymshark.com/";
-    public static String[] randomItemDetails;
-    public static String randSize;
 
     @Before
     public void initialization() {
@@ -40,22 +44,21 @@ public class gymSharkSteps extends base {
         driver.get(url);
         gp.acceptCookies();
         gp.getCategory(cat);
-
     }
 
     @And("I select a random item")
     public void iSelectARandomItem() {
-        randomItemDetails = gp.selectRandomItem();
+        world.randomItemDetails = gp.selectRandomItem();
     }
 
     @And("I verify details on Product page")
     public void iVerifyDetailsOnProductPage() {
-        gp.verifyDetailsOnProductPage(randomItemDetails);
+        gp.verifyDetailsOnProductPage(world.randomItemDetails);
     }
 
     @And("I select a random size")
     public void iSelectARandomSize() {
-        randSize = gp.selectRandomSize();
+        world.randSize = gp.selectRandomSize();
     }
 
     @When("I add the item to the basket")
@@ -65,7 +68,7 @@ public class gymSharkSteps extends base {
 
     @Then("I verify item has been added successfully to Summary page")
     public void iVerifyItemHasBeenAddedSuccessfullyToSummaryPage() throws InterruptedException {
-        gp.verifyDetailsOnSummaryPage(randomItemDetails, randSize);
+        gp.verifyDetailsOnSummaryPage(world.randomItemDetails, world.randSize);
     }
 
     @And("I close the summary")
@@ -85,12 +88,12 @@ public class gymSharkSteps extends base {
 
     @And("I verify values on Full Bag page")
     public void iVerifyValuesOnFullBagPage() {
-        gp.verifyValuesOnFullBagPage(randomItemDetails, randSize);
+        gp.verifyValuesOnFullBagPage(world.randomItemDetails, world.randSize);
     }
 
     @And("I verify values on Checkout page")
     public void iVerifyValuesOnCheckoutPage() {
-        gp.verifyValuesOnCheckoutPage(randomItemDetails, randSize);
+        gp.verifyValuesOnCheckoutPage(world.randomItemDetails, world.randSize);
     }
 }
 
