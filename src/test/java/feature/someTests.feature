@@ -1,6 +1,7 @@
+@AllTests
 Feature: Basic
 
-  @GymSharkTestOne
+  @TestOne
   Scenario Outline: Add a random product from New Releases
     Given I go to "<type>" New Releases
     And I select a random item
@@ -18,5 +19,17 @@ Feature: Basic
     Examples:
       | type        |
       | women       |
-      | men       |
+#      | men       |
       | accessories       |
+
+  @TestTwo
+  Scenario Outline: abc test
+    Given I go to "<type>" New Releases
+    And I select a random item
+    And I verify details on Product page
+    And I select a random size
+
+    Examples:
+      | type        |
+      | men       |
+
