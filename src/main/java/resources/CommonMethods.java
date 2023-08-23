@@ -1,7 +1,6 @@
-package pages;
+package resources;
 
 import org.openqa.selenium.*;
-import locators.homePageLocators;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -10,11 +9,9 @@ import java.time.Duration;
 public class CommonMethods {
     WebDriver driver;
 
-    homePageLocators homePage;
 
     public CommonMethods(WebDriver driver) {
         this.driver = driver;
-        homePage = new homePageLocators(driver);
     }
 
     public void scrollToElement(WebElement element) {
@@ -46,7 +43,7 @@ public class CommonMethods {
             }
         }
         else {
-            try { //is locator is CSS
+            try { //if locator is CSS
                 customWaitVisibilityOf(driver.findElement(By.cssSelector(locator)),timeout);
                 return true;
             }
