@@ -6,11 +6,11 @@ import locators.summaryPageLocators;
 import locators.checkoutPageLocators;
 import locators.fullBagLocators;
 import org.openqa.selenium.By;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import java.util.List;
 import java.util.Random;
+import resources.CommonMethods;
 
 import static org.junit.Assert.*;
 
