@@ -79,6 +79,7 @@ public class GymsharkPage {
         common.customWaitVisibilityOf(summaryPage.viewFullBagButton, 10);
         Thread.sleep(2000);
         String itemName = summaryPage.productName.getText().toLowerCase();
+
         if (!itemDetails[1].equals("None")) {
             itemFit = summaryPage.productFit.getText();
         }
@@ -96,7 +97,8 @@ public class GymsharkPage {
         assertEquals(summarySize, size);
     }
 
-    public String selectRandomSize() {
+    public String
+    selectRandomSize() {
         String randomSize = "None";
         List<WebElement> allSizes = productPage.allSizes;
         if (allSizes.size() > 0) {
@@ -115,7 +117,7 @@ public class GymsharkPage {
     public void acceptCookies() {common.click(homePage.acceptCookies);
     }
 
-    public void closeSummary() {common.click(summaryPage.closeXIcon);
+    public void closeSummary() {summaryPage.clickCloseXIcon();
     }
 
     public void verifyNumberOfItemsInBasket(String str1) {
@@ -129,7 +131,7 @@ public class GymsharkPage {
     }
 
     public void verifyValuesOnFullBagPage(String [] randomItemDetails, String randSize) {
-        common.click(summaryPage.viewFullBagButton);
+        summaryPage.clickViewFullBag();
         String itemFit = "None", summarySize = "None";
         String itemName = fullBagPage.productName.getText().toLowerCase();
         if (!randomItemDetails[1].equals("None")) {

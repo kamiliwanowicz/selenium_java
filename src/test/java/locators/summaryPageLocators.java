@@ -4,11 +4,14 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import resources.CommonMethods;
 
 public class summaryPageLocators {
+    CommonMethods common;
 
     public summaryPageLocators(WebDriver driver) {
         PageFactory.initElements(driver, this);
+        common = new CommonMethods(driver);
     }
 
     @FindBy(css = "*[class^='product-card_title']")
@@ -35,6 +38,13 @@ public class summaryPageLocators {
     @FindBy(css = "button[data-locator-id=miniBag-closeButton-select] i")
     public WebElement closeXIcon;
 
+    public void clickViewFullBag() {
+        common.click(viewFullBagButton);
+    }
+
+    public void clickCloseXIcon() {
+        common.click(closeXIcon);
+    }
 
 }
 
